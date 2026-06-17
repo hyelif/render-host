@@ -40,8 +40,5 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Expose port
 EXPOSE 8000
 
-# Start server (config loads from Render env vars at runtime)
-CMD php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache && \
-    php artisan serve --host=0.0.0.0 --port=8000
+# Start server (NO config:cache — it freezes env() which TursoService needs)
+CMD php artisan serve --host=0.0.0.0 --port=8000
