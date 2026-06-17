@@ -30,8 +30,10 @@ class TursoService
 
     public function __construct()
     {
-        $this->baseUrl   = rtrim(config('turso.database_url', ''), '/');
-        $this->authToken = config('turso.auth_token', '');
+        // Use getenv() directly — it reads from the process environment
+        // and works even after Laravel's config:cache freezes env().
+        $this->baseUrl   = rtrim((string) getenv('TURSO_DATABASE_URL'), '/');
+        $this->authToken = (string) getenv('TURSO_AUTH_TOKEN');
 
         // Convert libsql:// to https:// for HTTP API
         if (str_starts_with($this->baseUrl, 'libsql://')) {
