@@ -29,16 +29,17 @@ WORKDIR /app
 # Copy application files (dashboard/ contains the Laravel app)
 COPY dashboard/ .
 
+# Copy .env.example as fallback (actual env vars come from Render dashboard)
+RUN cp .env.example .env
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Cache Laravel configs
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
 
 # Expose port
 EXPOSE 8000
 
-# Start server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Start server (config loads from Render env vars at runtime)
+CMD php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache && \
+    php artisan serve --host=0.0.0.0 --port=8000
