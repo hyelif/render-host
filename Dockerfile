@@ -29,9 +29,8 @@ WORKDIR /app
 # Copy application files (dashboard/ contains the Laravel app)
 COPY dashboard/ .
 
-# Create minimal .env (actual env vars come from Render dashboard)
-RUN echo "APP_KEY=" > .env && \
-    mkdir -p bootstrap/cache storage/framework/cache storage/framework/sessions storage/framework/views storage/logs && \
+# Create required Laravel directories (no .env — Render env vars are used directly)
+RUN mkdir -p bootstrap/cache storage/framework/cache storage/framework/sessions storage/framework/views storage/logs && \
     chmod -R 777 bootstrap/cache storage
 
 # Install PHP dependencies
