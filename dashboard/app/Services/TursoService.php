@@ -30,8 +30,8 @@ class TursoService
 
     public function __construct()
     {
-        $this->baseUrl   = rtrim(env('TURSO_DATABASE_URL', ''), '/');
-        $this->authToken = env('TURSO_AUTH_TOKEN', '');
+        $this->baseUrl   = rtrim(config('turso.database_url', ''), '/');
+        $this->authToken = config('turso.auth_token', '');
 
         // Convert libsql:// to https:// for HTTP API
         if (str_starts_with($this->baseUrl, 'libsql://')) {
