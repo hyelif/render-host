@@ -12,6 +12,8 @@ services:
         sync: false
       - key: APP_URL
         value: https://smartponic-dashboard.onrender.com
+      - key: ASSET_URL
+        value: https://smartponic-dashboard.onrender.com
       - key: DB_CONNECTION
         value: libsql
       - key: TURSO_DATABASE_URL
