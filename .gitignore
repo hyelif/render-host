@@ -1,0 +1,15 @@
+/dashboard/node_modules/
+/dashboard/vendor/
+/dashboard/.env
+/dashboard/storage/framework/cache/
+/dashboard/storage/framework/sessions/
+/dashboard/storage/framework/views/
+/dashboard/storage/logs/*.log
+/dashboard/bootstrap/cache/
+/dashboard/.claude/
+/dashboard/screenshots/
+/dashboard/*.js
+/dashboard/*.mjs
+/dashboard/*.png
+/dashboard/pending-task.md
+.env.production

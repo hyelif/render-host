@@ -1,0 +1,22 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/node_modules": true
+        },
+        "editor.formatOnSave": true,
+        "php.validate.executablePath": "C:/xampp/php/php.exe"
+    },
+    "extensions": {
+        "recommendations": [
+            "bmewburn.vscode-intelephense-client",
+            "laravel.vscode-laravel",
+            "bradlc.vscode-tailwindcss"
+        ]
+    }
+}
