@@ -23,11 +23,11 @@ RUN docker-php-ext-install \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set working directory
+# Set working directory to the Laravel app (inside dashboard/)
 WORKDIR /app
 
-# Copy application files
-COPY . .
+# Copy application files (dashboard/ contains the Laravel app)
+COPY dashboard/ .
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
