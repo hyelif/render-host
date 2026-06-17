@@ -32,6 +32,10 @@ COPY dashboard/ .
 # Copy .env.example as fallback (actual env vars come from Render dashboard)
 RUN cp .env.example .env
 
+# Ensure required Laravel directories exist and are writable
+RUN mkdir -p bootstrap/cache storage/framework/cache storage/framework/sessions storage/framework/views storage/logs && \
+    chmod -R 777 bootstrap/cache storage
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
